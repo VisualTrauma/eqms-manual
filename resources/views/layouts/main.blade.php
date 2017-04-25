@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" href="{{ url('assets/img/favicon-16x16.png') }}" sizes="16x16">
     <link rel="icon" type="image/png" href="{{ url('assets/img/favicon-32x32.png') }}" sizes="32x32">
 
-    <title>TMS Manual</title>
+    <title>@yield('page-title')</title>
 
     <!-- uikit -->
     <link rel="stylesheet" href="{{ url('bower_components/uikit/css/uikit.almost-flat.min.css') }}" media="all">
@@ -30,14 +30,16 @@
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet" type="text/css">
 
+    @yield('css')
+
 </head>
-<body class=" sidebar_main_open sidebar_main_swipe header_full">
+<body class="sidebar_main_open sidebar_main_swipe header_full">
     <!-- main header -->
     <header id="header_main">
         <div class="header_main_content">
             <nav class="uk-navbar">
                 <div class="main_logo_top">
-                    <a href="{{ url('home') }}"><font color="white" style="font-family: 'Raleway', sans-serif; font-weight: 300; font-size: 24px;">TMS Manual</font></a>
+                    <a href="{{ url('introduction') }}"><font color="white" style="font-family: 'Raleway', sans-serif; font-weight: 300; font-size: 24px;">TMS Manual</font></a>
                 </div>
 
                 <!-- main sidebar switch -->
@@ -93,46 +95,35 @@
 
         <div class="menu_section">
             <ul>
-                <li title="Dashboard">
-                    <a href="#">
-                        <span class="menu_title">Introduction</span>
-                    </a>
+                <li class="@yield('nav-sec-introduction')" title="Introduction">
+                    <a href="{{ url('introduction') }}"><span class="menu_title">Introduction</span></a>
                 </li>
-                <li title="Mailbox">
-                    <a href="#">
-                        <span class="menu_title">Home Page & User Interface</span>
-                    </a>
+                <li class="@yield('nav-sec-home-page-and-user-interface')" title="Home Page & User Interface">
+                    <a href="{{ url('home-page-and-user-interface') }}"><span class="menu_title">Home Page & User Interface</span></a>
                 </li>
-                <li title="Invoices">
-                    <a href="#">
-                        <span class="menu_title">Training Department</span>
-                    </a>
+                <li title="Training Department">
+                    <a href="#"><span class="menu_title">Training Department</span></a>
                     <ul>
-                        <li><a href="#" style="margin-left: -30px;">Schedule Maintenance</a></li>
-                        <li><a href="#" style="margin-left: -30px;">Course Maintenance</a></li>
-                        <li><a href="#" style="margin-left: -30px;">Instructor Data Management</a></li>
+                        <li class="@yield('nav-schedule-maintenance')"><a href="{{ url('schedule-maintenance') }}" style="margin-left: -30px;">Schedule Maintenance</a></li>
+                        <li class="@yield('nav-course-maintenance')"><a href="{{ url('course-maintenance') }}" style="margin-left: -30px;">Course Maintenance</a></li>
+                        <li class="@yield('nav-instructor-data-management')"><a href="instructor-data-management" style="margin-left: -30px;">Instructor Data Management</a></li>
+                    </ul>
+                </li>
+                <li title="Marketing Department">
+                    <a href="#"><span class="menu_title">Marketing Department</span></a>
+                    <ul>
+                        <li class="@yield('nav-client-company-maintenance')"><a href="{{ url('client-company-maintenance') }}" style="margin-left: -30px;">Client Company Maintenance</a></li>
+                        <li class="@yield('nav-training-fee-maintenance')"><a href="{{ url('training-fee-maintenance') }}" style="margin-left: -30px;">Training Fee Maintenance</a></li>
+                        <li class="@yield('nav-discounts')"><a href="{{ url('discounts') }}" style="margin-left: -30px;">Discounts</a></li>
+                        <li class="@yield('nav-promos')"><a href="{{ url('promos') }}" style="margin-left: -30px;">Promos</a></li>
                     </ul>
                 </li>
                 <li title="Chats">
-                    <a href="#">
-                        <span class="menu_title">Marketing Department</span>
-                    </a>
+                    <a href="#"><span class="menu_title">Registration Department</span></a>
                     <ul>
-                        <li><a href="#" style="margin-left: -30px;">Client Company Maintenance</a></li>
-                        <li><a href="#" style="margin-left: -30px;">Training Fee Maintenance</a></li>
-                        <li><a href="#" style="margin-left: -30px;">Discounts</a></li>
-                        <li><a href="#" style="margin-left: -30px;">Promos</a></li>
-                        <li><a href="#" style="margin-left: -30px;">Rebates</a></li>
-                    </ul>
-                </li>
-                <li title="Chats">
-                    <a href="#">
-                        <span class="menu_title">Registration Department</span>
-                    </a>
-                    <ul>
-                        <li><a href="#" style="margin-left: -30px;">Trainee Data Management</a></li>
-                        <li><a href="#" style="margin-left: -30px;">Enrollment</a></li>
-                        <li><a href="#" style="margin-left: -30px;">Printing of Certificates</a></li>
+                        <li class="@yield('nav-trainee-data-management')"><a href="{{ url('trainee-data-management') }}" style="margin-left: -30px;">Trainee Data Management</a></li>
+                        <li class="@yield('nav-enrollment')"><a href="{{ url('enrollment') }}" style="margin-left: -30px;">Enrollment</a></li>
+                        <li class="@yield('nav-printing-of-certificates')"><a href="{{ url('printing-of-certificates') }}" style="margin-left: -30px;">Printing of Certificates</a></li>
                     </ul>
                 </li>
                 <li title="Chats">
@@ -423,5 +414,7 @@
 
         });
     </script>
+
+    @yield('scripts')
 </body>
 </html>
